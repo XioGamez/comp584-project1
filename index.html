@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
     <style type="text/css">
         /* CLIENT-SPECIFIC STYLES */
         body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
@@ -48,7 +47,16 @@
             line-height: inherit;
         }
 
+        /* Button animation */
+        @keyframes bounce {
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-5px);}
+        }
+        .btn:hover { animation:bounce 0.5s infinite; background-color:#1abc9c !important; }
 
+        /* Checkbox interactivity */
+        .toggle-content { display:none; }
+        input[type="checkbox"]:checked + .toggle-content { display:block; padding:10px; background:#f1f1f1; margin-top:10px; }
     </style>
 </head>
 <body id="body" style="margin: 0 !important; padding: 0 !important;">
@@ -66,27 +74,45 @@
                     <img src="images/duolingo-logo-1.png" alt="Duolingo logo" style="max-height: 100px; border-radius: 50%;">
 
                     <!-- Headline -->
-                    <h1>It's Time To Be Above Average</h1>
+                    <h1>We're Watching You...</h1>
 
                     <!-- Hero Image -->
                     <img src="images/duolingo-banner-2.png" alt="Duolingo banner" style="width: 100%; max-width: 600px; min-width: 100px; height: auto; display: block; margin: 0 auto;">
 
-                    <!-- Body copy -->
-                    <div style="padding: 5%; text-align: left;">
-                        <p>This is your change to be unique. This is your time to shine. Only smart people use Duolingo, are you smart?</p>
+                    <!-- body -->
+                    <div style="padding:5%; text-align: center;">
+                        <p>Yes, that’s right. We saw you skip today. Again. Are you trying to make your streak disappear?</p>
+                        <p>Other people are climbing the leaderboard while you’re busy scrolling cat videos. How does that feel?</p>
+                        <p>Languages don’t learn themselves. Your Duolingo owl is judging you. Don’t make it frown.</p>
+                        <p>Come on. Be above average. Or at least try. Seriously.</p>
                     </div>
 
-                    <!-- two-column section-->
+                    <!-- two-column section -->
                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                         <tr>
                             <td>
                                 <!-- left column -->
-                                <table align="left" role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
-
+                                <table align="left" class="stack-column" width="50%" cellspacing="0" cellpadding="0"
+                                       border="0">
+                                    <tr>
+                                        <td style="padding:5%; text-align:center;">
+                                            <h3>Pick Up That Streak</h3>
+                                            <p>Your friends are already ahead. Don’t be last.</p>
+                                            <a href="https://www.duolingo.com/learn" class="btn" style="background:#1abc9c; color:#fff; padding:10px 20px; border-radius:4px; display:inline-block; margin:0 auto; text-decoration:none;">Start Learning</a>
+                                        </td>
+                                    </tr>
                                 </table>
-                                <!-- right column -->
-                                <table align="right" role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
 
+                                <!-- right column -->
+                                <table align="right" class="stack-column" width="50%" cellspacing="0" cellpadding="0"
+                                       border="0">
+                                    <tr>
+                                        <td style="padding:5%; text-align:center;">
+                                            <h3>Check Your Shame</h3>
+                                            <p>See exactly how far behind you are. Don’t worry… we won’t laugh. Much.</p>
+                                            <a href="https://www.duolingo.com/profile" class="btn" style="background:#1abc9c; color:#fff; padding:10px 20px; border-radius:4px; display:inline-block; margin:0 auto; text-decoration:none;">View Profile</a>
+                                        </td>
+                                    </tr>
                                 </table>
                             </td>
                         </tr>
@@ -97,29 +123,67 @@
                         <tr>
                             <td>
                                 <!-- 1st column -->
-                                <table align="left" role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
-
+                                <table align="left" class="stack-column" width="33%" cellspacing="0" cellpadding="0"
+                                       border="0">
+                                    <tr>
+                                        <td style="padding:5%; text-align:center;">
+                                            <h3>Owl Approves</h3>
+                                            <p>Practice today and make your owl happy.</p>
+                                        </td>
+                                    </tr>
                                 </table>
                                 <!-- 2nd column -->
-                                <table align="right" role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
-
+                                <table align="left" class="stack-column" width="33%" cellspacing="0" cellpadding="0"
+                                       border="0">
+                                    <tr>
+                                        <td style="padding:5%; text-align:center;">
+                                            <h3>Leaderboard Loser?</h3>
+                                            <p>Not for long. Catch up before it’s too late!</p>
+                                        </td>
+                                    </tr>
                                 </table>
                                 <!-- 3rd column -->
-                                <table align="right" role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
-
+                                <table align="left" class="stack-column" width="33%" cellspacing="0" cellpadding="0"
+                                       border="0">
+                                    <tr>
+                                        <td style="padding:5%; text-align:center;">
+                                            <h3>Excuses Don’t Count</h3>
+                                            <p>Get back on track, or your streak evaporates. Literally.</p>
+                                        </td>
+                                    </tr>
                                 </table>
                             </td>
                         </tr>
                     </table>
+
+                    <!-- Checkbox interactivity -->
+                    <div style="margin-top:20px; text-align:center;">
+                        <label for="more-tips" style="cursor:pointer; color:#1abc9c; font-weight:bold;">Show Extra Study
+                            Tips</label>
+                        <input type="checkbox" id="more-tips" style="display:none;">
+                        <div class="toggle-content">
+                            <p>Practice 10 minutes daily, repeat new words aloud, and join a Duolingo club to stay
+                                motivated!</p>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div style="margin-top:30px; text-align:center;">
+                        <a href="https://www.duolingo.com" class="btn"
+                           style="background:#1abc9c; color:#fff; padding:15px 25px; border-radius:4px; display:inline-block; text-decoration:none;">Continue
+                            Learning</a>
+                    </div>
+
                 </div>
             </div>
         </td>
     </tr>
 </table>
-<!-- Footer information: Always include an unsubscribe link! -->
-<div style="text-align: center;">
-    <p>You are receiving this email because you subscribed.</p>
-    <a href="#" style="color:#3487cd;text-decoration:underline;">Unsubscribe</a>
+
+<!-- Footer information -->
+<div style="text-align:center; margin-top:20px;">
+    <p>You are receiving this email because you subscribed to Duolingo.</p>
+    <a href="#" style="color:#1abc9c; text-decoration:underline;">Unsubscribe</a>
 </div>
 </body>
 </html>
