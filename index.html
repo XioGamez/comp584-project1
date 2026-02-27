@@ -47,16 +47,40 @@
             line-height: inherit;
         }
 
-        /* Button animation */
+        /* button animation */
         @keyframes bounce {
             0%,100%{transform:translateY(0);}
             50%{transform:translateY(-5px);}
         }
         .btn:hover { animation:bounce 0.5s infinite; background-color:#1abc9c !important; }
 
-        /* Checkbox interactivity */
+        /* checkbox */
         .toggle-content { display:none; }
         input[type="checkbox"]:checked + .toggle-content { display:block; padding:10px; background:#f1f1f1; margin-top:10px; }
+
+        /* radio button */
+        .radio-toggle { display:none; }
+
+        .radio-content {
+            display:none;
+            padding:10px;
+            background:#f1f1f1;
+            margin-top:10px;
+        }
+
+        #excuse1:checked ~ .radio-box .r1,
+        #excuse2:checked ~ .radio-box .r2,
+        #excuse3:checked ~ .radio-box .r3 {
+            display:block;
+        }
+
+        .radio-label {
+            cursor:pointer;
+            color:#1abc9c;
+            font-weight:bold;
+            margin:0 5px;
+            display:inline-block;
+        }
     </style>
 </head>
 <body id="body" style="margin: 0 !important; padding: 0 !important;">
@@ -118,6 +142,35 @@
                         </tr>
                     </table>
 
+                    <!-- radio buttons -->
+                    <div style="margin-top:25px; text-align:center;">
+
+                        <p style="font-weight:bold;">Pick Your Excuse</p>
+
+                        <input type="radio" name="excuse" id="excuse1" class="radio-toggle">
+                        <input type="radio" name="excuse" id="excuse2" class="radio-toggle">
+                        <input type="radio" name="excuse" id="excuse3" class="radio-toggle">
+
+                        <label for="excuse1" class="radio-label">Too Busy</label>
+                        <label for="excuse2" class="radio-label">Too Tired</label>
+                        <label for="excuse3" class="radio-label">Too Distracted</label>
+
+                        <div class="radio-box">
+
+                            <div class="radio-content r1">
+                                <p>Busy enough to scroll though?</p>
+                            </div>
+
+                            <div class="radio-content r2">
+                                <p>Tired from doing nothing impressive?</p>
+                            </div>
+
+                            <div class="radio-content r3">
+                                <p>Distracted by literally everything?</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- three-column section -->
                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                         <tr>
@@ -128,7 +181,7 @@
                                     <tr>
                                         <td style="padding:5%; text-align:center;">
                                             <h3>Owl Approves</h3>
-                                            <p>Practice today and make your owl happy.</p>
+                                            <p>Practice today and make your Duo the owl happy.</p>
                                         </td>
                                     </tr>
                                 </table>
@@ -162,18 +215,20 @@
                             Tips</label>
                         <input type="checkbox" id="more-tips" style="display:none;">
                         <div class="toggle-content">
-                            <p>Practice 10 minutes daily, repeat new words aloud, and join a Duolingo club to stay
-                                motivated!</p>
+                            <p>Fine. Here's the secret:</p>
+                            <p>Consistency beats motivation.</p>
+                            <p>Motivation is flaky.</p>
+                            <p>Duolingo notifications are not.</p>
                         </div>
                     </div>
 
                     <!-- Call to Action -->
                     <div style="margin-top:30px; text-align:center;">
                         <a href="https://www.duolingo.com" class="btn"
-                           style="background:#1abc9c; color:#fff; padding:15px 25px; border-radius:4px; display:inline-block; text-decoration:none;">Continue
-                            Learning</a>
+                           style="background:#1abc9c; color:#fff; padding:15px 25px; border-radius:4px; display:inline-block; text-decoration:none;">
+                            Make The Duo Proud
+                        </a>
                     </div>
-
                 </div>
             </div>
         </td>
