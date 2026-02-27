@@ -47,33 +47,70 @@
             line-height: inherit;
         }
 
-        /* button animation */
+        /* ------------------------ ANIMATIONS ------------------------ */
+
+        /* button bounce on hover*/
         @keyframes bounce {
             0%,100%{transform:translateY(0);}
             50%{transform:translateY(-5px);}
         }
         .btn:hover { animation:bounce 0.5s infinite; background-color:#1abc9c !important; }
 
-        /* checkbox */
-        .toggle-content { display:none; }
-        input[type="checkbox"]:checked + .toggle-content { display:block; padding:10px; background:#f1f1f1; margin-top:10px; }
+        /* headline wiggle */
+        @keyframes judgeWiggle {
+            0%,100% { transform: rotate(0deg); }
+            25% { transform: rotate(1deg); }
+            75% { transform: rotate(-1deg); }
+        }
 
-        /* radio button */
-        .radio-toggle { display:none; }
+        /* call-to-action button shake */
+        @keyframes shameShake {
+            0%,100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
+        }
 
+        /* text pulse */
+        @keyframes guiltPulse {
+            0% { letter-spacing: 0px; }
+            50% { letter-spacing: 1px; }
+            100% { letter-spacing: 0px; }
+        }
+
+        /* slide in reveal for radio content */
+        @keyframes slideReveal {
+            from { transform: translateY(10px); }
+            to { transform: translateY(0); }
+        }
+
+        /* ------------------------ CHECKBOX TOGGLE ------------------------ */
+
+        .toggle-content { display:none;}  /* hidden by default */
+        input[type="checkbox"]:checked + .toggle-content { display:block; padding:10px; background:#f1f1f1 url("images/background.png") no-repeat center / cover; margin-top:10px; }  /* When checkbox is checked -> reveal content */
+
+        /* ------------------------ RADIO BUTTON INTERACTIVITY ------------------------ */
+
+        .radio-toggle { display:none; }  /* hides actual radio input button */
+
+        /* hidden drop down content */
         .radio-content {
             display:none;
             padding:10px;
-            background:#f1f1f1;
+            background: #f1f1f1 url(images/background.png) no-repeat center / cover;
             margin-top:10px;
+            animation:slideReveal 0.4s ease-out;
         }
 
+        /* shows correct slide when selected */
         #excuse1:checked ~ .radio-box .r1,
         #excuse2:checked ~ .radio-box .r2,
         #excuse3:checked ~ .radio-box .r3 {
             display:block;
         }
 
+        /* clickable label styling */
         .radio-label {
             cursor:pointer;
             color:#1abc9c;
@@ -98,7 +135,7 @@
                     <img src="images/duolingo-logo-1.png" alt="Duolingo logo" style="max-height: 100px; border-radius: 50%;">
 
                     <!-- Headline -->
-                    <h1>We're Watching You...</h1>
+                    <h1 style="animation:judgeWiggle 3s infinite;">We're Watching You...</h1>  <!-- wiggle animation -->
 
                     <!-- Hero Image -->
                     <img src="images/duolingo-banner-2.png" alt="Duolingo banner" style="width: 100%; max-width: 600px; min-width: 100px; height: auto; display: block; margin: 0 auto;">
@@ -109,6 +146,9 @@
                         <p>Other people are climbing the leaderboard while you’re busy scrolling cat videos. How does that feel?</p>
                         <p>Languages don’t learn themselves. Your Duolingo owl is judging you. Don’t make it frown.</p>
                         <p>Come on. Be above average. Or at least try. Seriously.</p>
+                        <p style="animation:guiltPulse 2s infinite;">  <!-- pulse animation -->
+                            Your streak is judging you right now.
+                        </p>
                     </div>
 
                     <!-- two-column section -->
@@ -158,15 +198,15 @@
                         <div class="radio-box">
 
                             <div class="radio-content r1">
-                                <p>Busy enough to scroll though?</p>
+                                <p><b>Busy enough to scroll though?</b></p>
                             </div>
 
                             <div class="radio-content r2">
-                                <p>Tired from doing nothing impressive?</p>
+                                <p><b>Tired from doing nothing impressive?</b></p>
                             </div>
 
                             <div class="radio-content r3">
-                                <p>Distracted by literally everything?</p>
+                                <p><b>Distracted by literally everything?</b></p>
                             </div>
                         </div>
                     </div>
@@ -209,25 +249,22 @@
                         </tr>
                     </table>
 
-                    <!-- Checkbox interactivity -->
+                    <!-- checkbox interactivity -->
                     <div style="margin-top:20px; text-align:center;">
                         <label for="more-tips" style="cursor:pointer; color:#1abc9c; font-weight:bold;">Show Extra Study
                             Tips</label>
                         <input type="checkbox" id="more-tips" style="display:none;">
                         <div class="toggle-content">
-                            <p>Fine. Here's the secret:</p>
-                            <p>Consistency beats motivation.</p>
-                            <p>Motivation is flaky.</p>
-                            <p>Duolingo notifications are not.</p>
+                            <p><b>Fine. Here's the secret:</b></p>
+                            <p><b>Consistency beats motivation.</b></p>
+                            <p><b>Motivation is flaky.</b></p>
+                            <p><b>Duolingo notifications are not.</b></p>
                         </div>
                     </div>
 
-                    <!-- Call to Action -->
+                    <!-- call to action -->
                     <div style="margin-top:30px; text-align:center;">
-                        <a href="https://www.duolingo.com" class="btn"
-                           style="background:#1abc9c; color:#fff; padding:15px 25px; border-radius:4px; display:inline-block; text-decoration:none;">
-                            Make The Duo Proud
-                        </a>
+                        <a href="https://www.duolingo.com" class="btn" style="background:#1abc9c; color:#fff; padding:15px 25px; border-radius:4px; display:inline-block; text-decoration:none; animation:shameShake 2s infinite;">Make Duo Proud</a> <!-- shake animation -->
                     </div>
                 </div>
             </div>
